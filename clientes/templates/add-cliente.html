@@ -45,7 +45,8 @@
 	  	 		
 	  	 	
 		  		<div class="mdl-cell mdl-cell--1-col  mdl-grid"></div>
-		  		<form action=""  method="post" role="form" class="mdl-grid form-add" enctype="multipart/form-data">{% csrf_token %}		  		
+		  		<form action=""  method="post" role="form" class="mdl-grid form-add" enctype="multipart/form-data">{% csrf_token %}	
+		  		{{form_cliente.as_p}}	  		
 		    	<div class=" mdl-cell mdl-cell--4-col mdl-card  mdl-grid">	    	
 		    		<div  class="mdl-cell--12-col mdl-typography--text-center mdl-grid snippet-group">
 		    			<div  id="file" class="mdl-cell--12-col mdl-typography--text-center">
