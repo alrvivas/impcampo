@@ -4,7 +4,10 @@ from django.conf import settings
 
 urlpatterns = patterns('',
 
-    url(r'^admin/', include(admin.site.urls)),    
+    url(r'^admin/', include(admin.site.urls)), 
+    url(r'^$', 'clientes.views.index', name='index'),	
+	url(r'^login/$', 'clientes.views.LoginView', name='login'),
+    url(r'^logout/$', 'clientes.views.LogoutView', name='logout'),   
 )
  
 if settings.DEBUG == False:
