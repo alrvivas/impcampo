@@ -45,8 +45,7 @@
 	  	 		
 	  	 	
 		  		<div class="mdl-cell mdl-cell--1-col  mdl-grid"></div>
-		  		<form action=""  method="post" role="form" class="mdl-grid form-add" enctype="multipart/form-data">{% csrf_token %}	
-		  		{{form_cliente.as_p}}	  		
+		  		<form action=""  method="post" role="form" class="mdl-grid form-add" enctype="multipart/form-data">{% csrf_token %}	  		
 		    	<div class=" mdl-cell mdl-cell--4-col mdl-card  mdl-grid">	    	
 		    		<div  class="mdl-cell--12-col mdl-typography--text-center mdl-grid snippet-group">
 		    			<div  id="file" class="mdl-cell--12-col mdl-typography--text-center">
@@ -58,7 +57,7 @@
 		    				</div>
 		    			</div>	
 			    		<input id="imgInp" name="imagen" type="file">
-			    		
+			    		{{ form_cliente.imagen.errors.as_text }}
 	   					<div class="mdl-cell--12-col">
 			    			<img id="img-person" src="#" alt="cliente" class="mdl-cell--12-col"  />
 			    		</div>
@@ -89,6 +88,10 @@
 					  	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
 						    <input class="mdl-textfield__input" type="text" name="celular" id="celular" required/>
 						    <label class="mdl-textfield__label" for="celular">Celular</label>
+					  	</div>
+					  	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
+						    <input class="mdl-textfield__input" type="text" name="edad" id="edad" value="{{empleado.edad}}" required/>
+						    <label class="mdl-textfield__label" for="edad">Edad</label>
 					  	</div>
 					  	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
 						    <input class="mdl-textfield__input" type="text" name="rfc" id="rfc" value="" required/>
