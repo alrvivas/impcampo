@@ -58,7 +58,7 @@ def add_cliente(request):
     cliente = Cliente.objects.all()
     if request.method == 'POST':
         form_cliente = clienteForm(request.POST,request.FILES)
-        if form_cliente.is_valid() and form_vacaciones.is_valid():
+        if form_cliente.is_valid():
             cliente = form_cliente.save(commit = False)
             cliente.save()            
             return redirect(cliente.get_absolute_url())
