@@ -51,4 +51,50 @@ def index(request):
     return render_to_response(template_name, locals(),context_instance=RequestContext(request)) 
 
 
+@login_required(login_url='/login/')
+def add_cliente(request):
+    page_title = "Añadir Cliente"
+    user = request.user
+    cliente = Cliente.objects.all()
+    puestos = Puesto.objects.all()
+    if request.method == 'POST':
+        form_cliente = clienteForm(request.POST,request.FILES)
+        if form_cliente.is_valid() and form_vacaciones.is_valid():
+            cliente = form_cliente.save(commit = False)
+            cliente.save()            
+            return redirect(cliente.get_absolute_url())
+    else:
+        form_cliente = clienteForm()
+    args = {}
+    args.update(csrf(request))
+    template_name ="add-cliente.html"
+    return render_to_response(template_name, locals(), context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def clientes(request):
+    page_title = "Clientes"
+    user = request.user
+    users = User.objects.all()
+    clientes = Cliente.objects.all()    
+    query = request.GET.get('q', '')
+    if query:
+        qset = (
+            Q(user=query) 
+        )    
+        results = Empleado.objects.filter(qset).order_by('-id')
+        template_name = "cliente-resultado.html"
+        return render_to_response(template_name, {"results": results,"query": query,'page_title':page_title},context_instance=RequestContext(request)) 
+    else:
+        results = []        
+    template_name ="clientes.html" 
+    return render_to_response(template_name, locals(),context_instance=RequestContext(request)) 
+
+@login_required(login_url='/login/')
+def cliente(request,cliente_id):
+    user = request.user
+    cliente = get_object_or_404(Cliente, id=cliente_id)
+    page_title = cliente.user     
+    template_name ="cliente.html" 
+    return render_to_response(template_name, locals(),context_instance=RequestContext(request))
+
 

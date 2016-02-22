@@ -12,7 +12,7 @@ class Representante(models.Model):
 		return unicode(self.nombre)
 
 class Cliente(models.Model):
-	represntante = models.ForeignKey(Representante)
+	represntante = models.ForeignKey(Representante,null=True)
 	fecha_registro = models.DateField(null=True)	
 	nombre_fiscal = models.CharField(max_length=140,null=True)
 	nombre_comercial = models.CharField(max_length=140,null=True)
