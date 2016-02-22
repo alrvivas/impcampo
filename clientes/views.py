@@ -56,7 +56,6 @@ def add_cliente(request):
     page_title = "Añadir Cliente"
     user = request.user
     cliente = Cliente.objects.all()
-    puestos = Puesto.objects.all()
     if request.method == 'POST':
         form_cliente = clienteForm(request.POST,request.FILES)
         if form_cliente.is_valid() and form_vacaciones.is_valid():
