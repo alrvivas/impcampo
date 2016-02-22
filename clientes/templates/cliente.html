@@ -76,7 +76,7 @@
 		    		<ul>
 		    			<li><strong>Nombre Fiscal: </strong>{{cliente.nombre_fiscal}}</li>
 		    			<li><strong>Nombre Comercial: </strong>{{cliente.nombre_comercial}}</li>
-		    			<li><strong>Fecha de Registro</strong>{{cliente.fecha_registro}}</li>
+		    			<li id="antiguedad"><strong>Fecha de Registro</strong>{{cliente.fecha_registro|timesince}}</li>
 		    			<li><strong>Vive en: </strong>{{cliente.direccion}}</li>
 		    			<li><strong>Telefono: </strong>{{cliente.telefono}}</li>
 		    			<li><strong>Celular: </strong>{{cliente.celular}}</li>
@@ -84,6 +84,9 @@
 		    			<li><strong>R.F.C.: </strong>{{cliente.rfc}}</li>
 		    		</ul>
 		    	</div>
+		    	<div class="mdl-tooltip mdl-tooltip--left" for="antiguedad">
+					{{cliente.fecha_registro}}
+				</div>
 		    </div>
 		    <div class="mdl-grid">
 		    	<div class="demo-cards mdl-cell mdl-cell--4-col mdl-grid mdl-grid--no-spacing">	
@@ -91,35 +94,15 @@
 				</div>
 		    	<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--8-col mdl-grid ">
 
-		    		<h2 class="mdl-cell mdl-cell--12-col">Datos Empresariales</h2>
-		    		<ul>
-		    			<li><strong>Empresa: </strong></li>
-		    			<li id="antiguedad"><strong>Antiguedad: </strong> {{empleado.fecha_ingreso|timesince}}</li>	
-		    			<li><strong>Departamento: </strong>{{empleado.departamento}}</li>    			
-		    			<li><strong>Salario de Contratación: </strong>${{empleado.salario_contratacion|intcomma}} MXN</li>
-		    			<li><strong>Salario Actual: </strong>${{empleado.salario_actual|intcomma}} MXN</li>
-		    			<li><strong>Puesto: </strong>{{empleado.puesto}}</li>
-		    			<li><strong>Contrato: </strong>{{empleado.tipo_contrato}}</li>
+		    		<h2 class="mdl-cell mdl-cell--12-col">Representante Empresarial</h2>
+		    		<ul>		    			
+		    			<li><strong>Nombre: </strong>{{representante.nombre}}</li>
+		    			<li><strong>Telefono: </strong>{{cliente.telefono}}</li>
+		    			<li><strong>Celular: </strong>{{cliente.celular}}</li>    			
+		    			
 		    		</ul>
 		    	</div>
-		    	<div class="mdl-tooltip mdl-tooltip--left" for="antiguedad">
-					{{empleado.fecha_ingreso}}
-				</div>	
-	  		</div>
-	  		<div class="mdl-grid">
-	  			<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid ">
-	  				{% for a in archivos %}
-	  					<div class="mdl-select-file mdl-typography--text-center"><i class="material-icons md-128 mdl-color-text--red-500">insert_drive_file</i><br />{{a.nombre}}</div>
-	  				{% endfor %}
-	  				<div id="show-action" class="mdl-select-file mdl-js-ripple-effect mdl-typography--text-center">
-					   <i class="material-icons md-128 mdl-color-text--blue-500">file_upload</i>
-					</div>
-					<div class="mdl-tooltip mdl-tooltip--large" for="show-action">
-						Subir Archivo
-					</div>
-
-
-	  			</div>
+		    		
 	  		</div>
 	  		
 	  	</div>	  	

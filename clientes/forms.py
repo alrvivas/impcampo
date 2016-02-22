@@ -9,7 +9,7 @@ from .models import Cliente,Representante
 class clienteForm(ModelForm):
 	class Meta:
 		model = Cliente
-		exclude = ['represntante']
+		fields = '__all__'
 
 class representanteForm(ModelForm):
     class Meta:
