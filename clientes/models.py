@@ -21,7 +21,7 @@ class Cliente(models.Model):
 	celular	= models.CharField(max_length=15,null=True)
 	telefono = models.CharField(max_length=15,null=True)
 	dias_credito = models.PositiveIntegerField(null=True)	
-	imagen = models.ImageField("Imagen Cliente", upload_to="images/empleados", blank=True, null=True,default='images/empleados/default-01.png')
+	imagen = models.ImageField("Imagen Cliente", upload_to="images/clientes", blank=True, null=True,default='images/clientes/default-01.png')
 	
 	@models.permalink
 	def get_absolute_url(self):
