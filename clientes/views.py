@@ -78,7 +78,7 @@ def clientes(request):
     query = request.GET.get('q', '')
     if query:
         qset = (
-            Q(nombre_comercial=query) | Q(nombre_fiscal=query)
+            Q(nombre_comercial__icontains=query) | Q(nombre_fiscal__icontains=query)
         )    
         results = Cliente.objects.filter(qset).order_by('-id')
         template_name = "resultados-cliente.html"
