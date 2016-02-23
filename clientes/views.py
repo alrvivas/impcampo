@@ -100,6 +100,7 @@ def cliente(request,cliente_id):
 def add_representante(request,cliente_id):
     user = request.user
     cliente = get_object_or_404(Cliente, id=cliente_id)
+    page_title = cliente.nombre_comercial 
     representante = Representante.objects.all()
     if request.method == 'POST':
         form_representante = representanteForm(request.POST)
@@ -110,7 +111,6 @@ def add_representante(request,cliente_id):
     else:
         form_representante = representanteForm()
     args = {}
-    args.update(csrf(request))
-    page_title = cliente.nombre_comercial     
+    args.update(csrf(request))    
     template_name ="add-representante.html" 
     return render_to_response(template_name, locals(),context_instance=RequestContext(request))

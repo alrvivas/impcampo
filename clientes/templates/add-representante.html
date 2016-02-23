@@ -47,24 +47,11 @@
 		  		<div class="mdl-cell mdl-cell--1-col  mdl-grid"></div>
 		  		<form action=""  method="post" role="form" class="mdl-grid form-add" enctype="multipart/form-data">{% csrf_token %}	  		
 		    	<div class=" mdl-cell mdl-cell--4-col mdl-card  mdl-grid">	    	
-		    		<div  class="mdl-cell--12-col mdl-typography--text-center mdl-grid snippet-group">
-		    			<div  id="file" class="mdl-cell--12-col mdl-typography--text-center">
-		    				<i class="material-icons md-128">camera_alt</i>
-		    			</div>
-		    			<div class="snippet-demo">
-	          				<div class="snippet-demo-container demo-spinner demo-spinner__spinner-single-color">
-		    					<div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner "></div>	
-		    				</div>
-		    			</div>	
-			    		<input id="imgInp" name="imagen" type="file">
-			    		{{ form_cliente.imagen.errors.as_text }}
-	   					<div class="mdl-cell--12-col">
-			    			<img id="img-person" src="#" alt="cliente" class="mdl-cell--12-col"  />
-			    		</div>
-	   				</div>
+		    		
 		    	</div>
 		    	<div class=" mdl-cell mdl-cell--6-col  mdl-grid">
-		    			{{form_representante.as_p}}
+		    			
+		    			<input type="hidden" name="cliente" id="cliente" value="{{cliente.pk}}" required/>
 		    			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
 						    <input class="mdl-textfield__input" type="text" name="nombre" id="nombre" value="" required/>
 						    <label class="mdl-textfield__label" for="nombre">Nombre</label>
