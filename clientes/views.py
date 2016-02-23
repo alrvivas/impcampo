@@ -116,7 +116,7 @@ def add_representante(request,cliente_id):
     template_name ="add-representante.html" 
     return render_to_response(template_name, locals(),context_instance=RequestContext(request))
 
-def edit_cliente(request):
+def edit_cliente(request,cliente_id):
     page_title = "Editat Cliente"
     user = request.user
     cliente = get_object_or_404(Cliente, id=cliente_id)
