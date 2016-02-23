@@ -104,7 +104,7 @@ def add_representante(request,cliente_id):
     if request.method == 'POST':
         form_representante = representanteForm(request.POST)
         if form_representante.is_valid():
-            representante = form_cliente.save(commit = False)
+            representante = form_representante.save(commit = False)
             representante.save()            
             return redirect(cliente.get_absolute_url())
     else:
