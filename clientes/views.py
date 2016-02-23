@@ -91,7 +91,8 @@ def clientes(request):
 @login_required(login_url='/login/')
 def cliente(request,cliente_id):
     user = request.user
-    cliente = get_object_or_404(Cliente, id=cliente_id)    
+    cliente = get_object_or_404(Cliente, id=cliente_id)
+    representantes = Representante.objects.filter(cliente=cliente)    
     page_title = cliente.nombre_comercial     
     template_name ="cliente.html" 
     return render_to_response(template_name, locals(),context_instance=RequestContext(request))
