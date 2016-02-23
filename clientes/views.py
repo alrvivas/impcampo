@@ -115,3 +115,20 @@ def add_representante(request,cliente_id):
     args.update(csrf(request))    
     template_name ="add-representante.html" 
     return render_to_response(template_name, locals(),context_instance=RequestContext(request))
+
+def edit_cliente(request):
+    page_title = "Editat Cliente"
+    user = request.user
+    cliente = get_object_or_404(Cliente, id=cliente_id)
+    if request.method == 'POST':
+        form_cliente = clienteForm(request.POST,request.FILES,instance=cliente)
+        if form_cliente.is_valid():
+            cliente = form_cliente.save(commit = False)
+            cliente.save()            
+            return redirect(cliente.get_absolute_url())
+    else:
+        form_cliente = clienteForm()
+    args = {}
+    args.update(csrf(request))
+    template_name ="editar-cliente.html"
+    return render_to_response(template_name, locals(), context_instance=RequestContext(request))

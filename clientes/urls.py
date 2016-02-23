@@ -5,6 +5,7 @@ urlpatterns = patterns('',
 	url(r'^$', 'clientes.views.clientes', name='clientes'),	
 	url(r'^perfil/(?P<cliente_id>[-\w]+)$', 'clientes.views.cliente', name='cliente'),
 	url(r'^add-representante/(?P<cliente_id>[-\w]+)$', 'clientes.views.add_representante', name='add-representante'),
-	url(r'^add-cliente$', 'clientes.views.add_cliente', name='add-cliente'), 
+	url(r'^add-cliente$', 'clientes.views.add_cliente', name='add-cliente'),
+	url(r'^editar-cliente/(?P<cliente_id>[-\w]+)$', 'clientes.views.edit_cliente', name='editar-cliente'),
 	
 )
