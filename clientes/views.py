@@ -78,10 +78,10 @@ def clientes(request):
     query = request.GET.get('q', '')
     if query:
         qset = (
-            Q(user=query) 
+            Q(nombre_comercial=query) | Q(nombre_fiscal=query)
         )    
         results = Empleado.objects.filter(qset).order_by('-id')
-        template_name = "cliente-resultado.html"
+        template_name = "resultados-cliente.html"
         return render_to_response(template_name, {"results": results,"query": query,'page_title':page_title},context_instance=RequestContext(request)) 
     else:
         results = []        

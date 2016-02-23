@@ -73,7 +73,7 @@
 						    <label class="mdl-textfield__label" for="nombre_comercial">Nombre Comercial</label>
 					  	</div>
 				    	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
-						    <input class="mdl-textfield__input" type="date" name="fecha_registro" id="fecha_registro" value="{{cliente.fecha_registro}}" required/>
+						    <input class="mdl-textfield__input" type="date" name="fecha_registro" id="fecha_registro" value="{{cliente.fecha_registro|date:'Y-m-d'}}" required/>
 						    <label class="mdl-textfield__label" for="fecha_registro">Fecha De Registro</label>
 					  	</div>
 					  	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
