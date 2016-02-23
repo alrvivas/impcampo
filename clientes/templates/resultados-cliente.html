@@ -16,7 +16,7 @@
 		</div>
 		<div class="mdl-typography--text-center ">
 			<div class="mdl-layout-title">
-				<h1 >{{page_title}}</h1>
+				{% if query %}<h1 >{{ query|escape }}</h1> {% endif %}	
 			</div>
 
 			
@@ -51,9 +51,9 @@
 					    </tr>
 					  	</thead>
 					  	<tbody>
-					  	{% if query %}
+					  	
 					  	{% if results %}  
-					  		{% for c in clientes %}
+					  		{% for c in results %}
 					    	<tr>
 					      		<td class="mdl-data-table__cell--non-numeric">
 					      			<a href="{{ c.get_absolute_url }}">
@@ -72,7 +72,7 @@
 			    		{% else %}             
                     		<p>No hay resultados para {{ query|escape }} :(</p>
 					    {% endif %}	
-					    {% endif %}	
+					   
 					    
 					  </tbody>
 					</table>
