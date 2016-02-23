@@ -56,7 +56,7 @@
 		    					<div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner "></div>	
 		    				</div>
 		    			</div>	
-			    		<input id="imgInp" name="imagen" type="file">
+			    		<input id="imgInp" name="imagen" value="{{cliente.imagen}}" type="file">
 			    		{{ form_cliente.imagen.errors.as_text }}
 	   					<div class="mdl-cell--12-col">
 			    			<img id="img-person" src="#" alt="cliente" class="mdl-cell--12-col"  />
@@ -65,35 +65,35 @@
 		    	</div>
 		    	<div class=" mdl-cell mdl-cell--6-col  mdl-grid">		    			
 		    			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
-						    <input class="mdl-textfield__input" type="text" name="nombre_fiscal" id="nombre_fiscal" value="" required/>
+						    <input class="mdl-textfield__input" type="text" name="nombre_fiscal" id="nombre_fiscal" value="{{cliente.nombre_fiscal}}" required/>
 						    <label class="mdl-textfield__label" for="nombre_fiscal">Nombre Fiscal</label>
 					  	</div>				  	  		
 			    		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
-						    <input class="mdl-textfield__input" type="text" name="nombre_comercial" id="nombre_comercial" value="" required/>
+						    <input class="mdl-textfield__input" type="text" name="nombre_comercial" id="nombre_comercial" value="{{cliente.nombre_comercial}}" required/>
 						    <label class="mdl-textfield__label" for="nombre_comercial">Nombre Comercial</label>
 					  	</div>
 				    	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
-						    <input class="mdl-textfield__input" type="date" name="fecha_registro" id="fecha_registro" value="" required/>
+						    <input class="mdl-textfield__input" type="date" name="fecha_registro" id="fecha_registro" value="{{cliente.fecha_registro}}" required/>
 						    <label class="mdl-textfield__label" for="fecha_registro">Fecha De Registro</label>
 					  	</div>
 					  	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
-						    <input class="mdl-textfield__input" type="text" name="direccion" id="direccion" value="{{empleado.direccion}}" required/>
+						    <input class="mdl-textfield__input" type="text" name="direccion" id="direccion" value="{{cliente.direccion}}" required/>
 						    <label class="mdl-textfield__label" for="direccion">Se Ubica en</label>
 					  	</div>
 					  	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
-						    <input class="mdl-textfield__input" type="text" name="telefono" id="telefono" required/>
+						    <input class="mdl-textfield__input" type="text" name="telefono" id="telefono" value="{{cliente.telefono}}"required/>
 						    <label class="mdl-textfield__label" for="telefono">Telefono</label>
 					  	</div>
 					  	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
-						    <input class="mdl-textfield__input" type="text" name="celular" id="celular" required/>
+						    <input class="mdl-textfield__input" type="text" name="celular" id="celular" value="{{cliente.celular}}" required/>
 						    <label class="mdl-textfield__label" for="celular">Celular</label>
 					  	</div>
 					  	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
-						    <input class="mdl-textfield__input" type="text" name="dias_credito" id="dias_credito" value="" required/>
+						    <input class="mdl-textfield__input" type="text" name="dias_credito" id="dias_credito" value="{{cliente.dias_credito}}" required/>
 						    <label class="mdl-textfield__label" for="dias_credito">Días De Credito</label>
 					  	</div>
 					  	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
-						    <input class="mdl-textfield__input" type="text" name="rfc" id="rfc" value="" required/>
+						    <input class="mdl-textfield__input" type="text" name="rfc" id="rfc" value="{{cliente.rfc}}" required/>
 						    <label class="mdl-textfield__label" for="rfc">R.F.C.</label>
 					  	</div>
 					  	
