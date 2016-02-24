@@ -11,7 +11,7 @@ urlpatterns = patterns('',
     url(r'^clientes/', include('clientes.urls')),
     url(r'^proveedores/', include('proveedores.urls')),   
 )   
-)
+
  
 if settings.DEBUG == False:
     urlpatterns += patterns('',
