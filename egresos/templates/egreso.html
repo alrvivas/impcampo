@@ -79,7 +79,7 @@
 		    			<li id="pago"><strong>Fecha de Pago: </strong>{{egreso.fecha_pago|date:'Y-m-d'}}</li>
 		    			<li><strong>Subtotal: </strong>{{egreso.sub_total}}</li>
 		    			<li><strong>Total: </strong>{{egreso.total}}</li>
-		    			<li><strong>Archivo: </strong>{{egreso.archivo.url}}</li>
+		    			<li><strong>Archivo: </strong><a href="{{egreso.archivo.url}}"><i class="material-icons mdl-color--red-500">picture_as_pdf</i></a></li>
 		    		</ul>
 		    	</div>
 		    	<div class="mdl-tooltip mdl-tooltip--left" for="registro">
@@ -89,29 +89,9 @@
 					{{egreso.fecha_factura|timesince}}
 				</div>
 				<div class="mdl-tooltip mdl-tooltip--left" for="pago">
-					{{egreso.fecha_pago|timesince}}
+					{{egreso.fecha_pago|timeuntil}}
 				</div>
 		    </div>
-		    <div class="mdl-grid">
-		    	<div class="demo-cards mdl-cell mdl-cell--4-col mdl-grid mdl-grid--no-spacing">	
-			  		
-				</div>
-		    	<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--8-col mdl-grid ">
-
-		    		<h2 class="mdl-cell mdl-cell--12-col">Representantes Empresariales</h2>
-		    		{% for r in representantes %}
-		    		<ul>		    			
-		    			<li><strong>Nombre: </strong>{{r.nombre}}</li>
-		    			<li><strong>Telefono: </strong>{{r.telefono}}</li>
-		    			<li><strong>Celular: </strong>{{r.celular}}</li>    			
-		    			
-		    		</ul>
-		    		{% empty %}
-		    			<p>No hay represntantes asignados :( <a href="{{cliente.get_absolute_url_add_r}}">¡asigna uno! :)</a></p>
-		    		{% endfor %}
-		    	</div>
-		    		
-	  		</div>
 	  		
 	  	</div>	  	
 	  		
