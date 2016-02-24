@@ -77,7 +77,7 @@ def add_representante(request,proveedor_id):
         form_representante = representanteForm()
     args = {}
     args.update(csrf(request))    
-    template_name ="add-representante.html" 
+    template_name ="add-representante-proveedor.html" 
     return render_to_response(template_name, locals(),context_instance=RequestContext(request))
 
 def edit_proveedor(request,proveedor_id):
