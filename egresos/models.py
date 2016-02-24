@@ -20,7 +20,7 @@ class Egreso(models.Model):
 		return('egreso', (), { 'egreso_id': self.id })
 
 	@models.permalink
-	def get_absolute_url_eddit_e(self):
+	def get_absolute_url_edit_e(self):
 		return('editar-egreso', (), { 'egreso_id': self.id })
 
 	def __unicode__(self):
