@@ -20,10 +20,10 @@ class Proveedor(models.Model):
 
 	@models.permalink
 	def get_absolute_url_add_r(self):
-		return('add-proveedor', (), { 'proveedor_id': self.id })
+		return('add-representante', (), { 'proveedor_id': self.id })
 	
 	@models.permalink
-	def get_absolute_url_edit_e(self):
+	def get_absolute_url_edit_p(self):
 		return('editar-proveedor', (), { 'proveedor_id': self.id })
 
 	def __unicode__(self):
