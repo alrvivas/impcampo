@@ -54,7 +54,7 @@
 					  		<select class="mdl-textfield__input" type="text" name="proveedor" id="proveedor" required>
 					  			<option value="" disabled selected>Seleccione uno...</option>
 					  			{% for p in proveedores %}
-					  				<option value="{{p.id}}">{{p.nombre}}</option>
+					  				<option value="{{p.id}}">{{p.nombre_comercial}}</option>
 					  			{% endfor %}
 					  		</select>      
 						    <label class="mdl-textfield__label" for="departamento">Proveedor</label>
