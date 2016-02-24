@@ -18,8 +18,16 @@ class Proveedor(models.Model):
 	def get_absolute_url(self):
 		return('proveedor', (), { 'proveedor_id': self.id })
 
+	@models.permalink
+	def get_absolute_url_add_r(self):
+		return('add-proveedor', (), { 'proveedor_id': self.id })
+	
+	@models.permalink
+	def get_absolute_url_edit_e(self):
+		return('editar-proveedor', (), { 'proveedor_id': self.id })
+
 	def __unicode__(self):
-		return unicode(self.id)
+		return unicode(self.nombre_comercial)
 
 class Representante(models.Model):
 	proveedor = models.ForeignKey(Proveedor,null=True)
