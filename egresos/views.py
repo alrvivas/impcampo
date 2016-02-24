@@ -10,6 +10,7 @@ from django.contrib.auth import logout as auth_logout
 from django.db.models import Count, Avg,Sum
 from django.views.generic.base import View
 from models import *
+from proveedores.models import *
 from forms import *
 import datetime
 from django.contrib.auth.models import User
