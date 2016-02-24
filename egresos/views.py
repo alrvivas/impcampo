@@ -22,7 +22,7 @@ def add_egreso(request):
     page_title = "Añadir Egreso"
     user = request.user
     egreso = Egreso.objects.all()
-    proveedores = Proveedores.objects.all()
+    proveedores = Proveedor.objects.all()
     if request.method == 'POST':
         form_egreso = egresoForm(request.POST,request.FILES)
         if form_egreso.is_valid():
@@ -65,7 +65,8 @@ def egreso(request,egreso_id):
 def edit_egreso(request,egreso_id):
     page_title = "Editat Egreso"
     user = request.user
-    egreso = get_object_or_404(Egreso, id=egreso_id)
+    egreso = get_object_or_404(Egreso, id=egreso_id)    
+    proveedores = Proveedor.objects.all()
     if request.method == 'POST':
         form_egreso = egresoForm(request.POST,request.FILES,instance=egreso)
         if form_egreso.is_valid():
