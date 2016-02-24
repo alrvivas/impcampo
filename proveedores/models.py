@@ -3,16 +3,7 @@ from django.contrib.auth.models import User
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill
 
-class Representante(models.Model):
-	nombre 	= models.CharField(max_length=140)
-	celular	= models.CharField(max_length=15,null=True)
-	telefono = models.CharField(max_length=15,null=True)
-
-	def __unicode__(self): 
-		return unicode(self.nombre)
-
 class Proveedor(models.Model):
-	represntante = models.ForeignKey(Representante)
 	fecha_registro = models.DateField(null=True)	
 	nombre_fiscal = models.CharField(max_length=140,null=True)
 	nombre_comercial = models.CharField(max_length=140,null=True)
@@ -21,7 +12,7 @@ class Proveedor(models.Model):
 	celular	= models.CharField(max_length=15,null=True)
 	telefono = models.CharField(max_length=15,null=True)
 	dias_credito = models.PositiveIntegerField(null=True)	
-	imagen = models.ImageField("Imagen Proveedor", upload_to="images/empleados", blank=True, null=True,default='images/empleados/default-01.png')
+	imagen = models.ImageField("Imagen Proveedor", upload_to="images/proveedores", blank=True, null=True,default='images/proveedores/default-01.png')
 	
 	@models.permalink
 	def get_absolute_url(self):
@@ -29,3 +20,12 @@ class Proveedor(models.Model):
 
 	def __unicode__(self):
 		return unicode(self.id)
+
+class Representante(models.Model):
+	proveedor = models.ForeignKey(Proveedor,null=True)
+	nombre 	= models.CharField(max_length=140)
+	celular	= models.CharField(max_length=15,null=True)
+	telefono = models.CharField(max_length=15,null=True)
+
+	def __unicode__(self): 
+		return unicode(self.nombre)

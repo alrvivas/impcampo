@@ -16,7 +16,7 @@
 		</div>
 		<div class="mdl-typography--text-center ">
 			<div class="mdl-layout-title">
-				{% if query %}<h1 >{{ query|escape }}</h1> {% endif %}	
+				<h1 >{{page_title}}</h1>
 			</div>
 
 			
@@ -26,7 +26,7 @@
 		</div>	
 		<div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--deep-orange-A400">
 			
-			<a href="{% url 'add-cliente' %}" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="add">
+			<a href="{% url 'add-proveedor' %}" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="add">
 	            <i class="material-icons" role="presentation">add</i>
 	            <span class="visuallyhidden">Add</span>
 	      </a>
@@ -38,7 +38,7 @@
 {% block contedor %}
   	<main class="mdl-layout__content mdl-color--grey-100">
 	  	<div class="mdl-grid demo-content mdl-layout__tab-panel is-active">		  		
-		    	<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid ">	    		
+		    	<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid ">
 		    		<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-fullwidth">
 					  <thead>
 					    <tr>
@@ -52,28 +52,22 @@
 					    </tr>
 					  	</thead>
 					  	<tbody>
-					  	
-					  	{% if results %}  
-					  		{% for c in results %}
+					  	{% for p in proveedores %}
 					    	<tr>
 					      		<td class="mdl-data-table__cell--non-numeric">
-					      			<a href="{{ c.get_absolute_url }}">
-					      				{{c.nombre_comercial}}
+					      			<a href="{{ p.get_absolute_url }}">
+					      				{{p.nombre_comercial}}
 					      			</a>
 					      		</td>
-					      		<td>{{c.nombre_fiscal}}</td>
-					      		<td>{{c.direccion}}</td>
-					      		<td>{{c.rfc}}</td>
-					      		<td>{{c.dias_credito}}</td>
-					      		<td>{{c.celular}}</td>
-					      		<td>{{c.telefono}}</td>
-					      		<td>{{c.fecha_registro}}</td>
-					    	</tr>
-					    	{% endfor %}
-			    		{% else %}             
-                    		<p>No hay resultados para {{ query|escape }} :(</p>
-					    {% endif %}	
-					   
+					      		<td>{{p.nombre_fiscal}}</td>
+					      		<td>{{p.direccion}}</td>
+					      		<td>{{p.rfc}}</td>
+					      		<td>{{p.dias_credito}}</td>
+					      		<td>{{p.celular}}</td>
+					      		<td>{{p.telefono}}</td>
+					      		<td>{{p.fecha_registro}}</td>
+					    </tr>
+					    {% endfor %}
 					    
 					  </tbody>
 					</table>

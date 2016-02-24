@@ -73,7 +73,6 @@ def add_cliente(request):
 def clientes(request):
     page_title = "Clientes"
     user = request.user
-    users = User.objects.all()
     clientes = Cliente.objects.all()    
     query = request.GET.get('q', '')
     if query:
