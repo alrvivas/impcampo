@@ -52,7 +52,7 @@
 		    	<div class=" mdl-cell mdl-cell--6-col  mdl-grid">		    			
 		    			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
 					  		<select class="mdl-textfield__input" type="text" name="proveedor" id="proveedor" required>
-					  			<option value="{{egreso.proveedor.pk}}" disabled selected>{{egreso.nombre_comercial}}</option>
+					  			<option value="{{egreso.proveedor.pk}}" disabled selected>{{egreso.proveedor.nombre_comercial}}</option>
 					  			{% for p in proveedores %}
 					  				<option value="{{p.id}}">{{p.nombre_comercial}}</option>
 					  			{% endfor %}
