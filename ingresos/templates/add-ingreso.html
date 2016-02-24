@@ -1,0 +1,121 @@
+{% extends "base.html" %} 
+{% block header %}
+	<header class="mdl-layout__header mdl-layout__header--scroll mdl-color--deep-orange-500">	  			
+    	<div class="mdl-layout--large-screen-only mdl-layout__header-row">	    		
+	    	<div class=" mdl-layout-spacer"></div>
+	    	<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
+    			<form>
+		            <label class="mdl-button mdl-js-button mdl-button--icon" for="search-field">
+		              	<i class="material-icons">search</i>
+		            </label>
+		            <div class="mdl-textfield__expandable-holder">
+		              	<input class="mdl-textfield__input" type="text" id="search-field">
+		            </div>
+	            </form>
+          	</div>
+		</div>
+    	<div class="mdl-typography--text-center ">
+    		<div class="mdl-layout-title">
+    			<h1 >{{page_title}}</h1>
+    		</div>
+
+    		
+    	</div>
+    	<div class="mdl-layout--large-screen-only mdl-layout__header-row">
+    		<!---->
+    	</div>	
+    	<div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--deep-orange-A400">
+    		
+    		<!--<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="add">
+	            <i class="material-icons" role="presentation">add</i>
+	            <span class="visuallyhidden">Add</span>
+          </button>-->
+    	</div>	
+    </header>
+   {% include "menu.html" %}
+{% endblock %}
+
+{% block contedor %}
+	
+  	<main class="mdl-layout__content mdl-color--grey-100">
+	  	<div class="mdl-grid demo-content mdl-layout__tab-panel is-active">
+	  
+	  	 	<section class="section--center mdl-color--white mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+	  	 	
+	  	 		
+	  	 	
+		  		<div class="mdl-cell mdl-cell--1-col  mdl-grid"></div>
+		  		<form action=""  method="post" role="form" class="mdl-grid form-add" enctype="multipart/form-data">{% csrf_token %}	  		
+		    	<div class=" mdl-cell mdl-cell--4-col mdl-card  mdl-grid">	    	
+		    		
+		    	</div>
+		    	<div class=" mdl-cell mdl-cell--6-col  mdl-grid">		    			
+		    			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
+					  		<select class="mdl-textfield__input" type="text" name="cliente" id="cliente" required>
+					  			<option value="" disabled selected>Seleccione uno...</option>
+					  			{% for c in clientes %}
+					  				<option value="{{c.id}}">{{c.nombre_comercial}}</option>
+					  			{% endfor %}
+					  		</select>      
+						    <label class="mdl-textfield__label" for="cliente">Cliente</label>
+					  	</div>			  	  		
+			    		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
+						    <input class="mdl-textfield__input" type="text" name="no_factura" id="no_factura" value="" required/>
+						    <label class="mdl-textfield__label" for="no_factura">No factura</label>
+					  	</div>
+				    	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
+						    <input class="mdl-textfield__input" type="date" name="fecha_registro" id="fecha_registro" value="" required/>
+						    <label class="mdl-textfield__label" for="fecha_registro">Fecha De Registro</label>
+					  	</div>
+					  	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
+						    <input class="mdl-textfield__input" type="date" name="fecha_factura" id="fecha_factura" value="" required/>
+						    <label class="mdl-textfield__label" for="fecha_factura">Fecha De Factura</label>
+					  	</div>
+					  	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
+						    <input class="mdl-textfield__input" type="date" name="fecha_pago" id="fecha_pago" value="" required/>
+						    <label class="mdl-textfield__label" for="fecha_pago">Fecha De Pago</label>
+					  	</div>
+					  	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
+						    <input class="mdl-textfield__input" type="text" name="sub_total" id="sub_total" required/>
+						    <label class="mdl-textfield__label" for="sub_total">Subtotal</label>
+					  	</div>
+					  	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
+						    <input class="mdl-textfield__input" type="text" name="total" id="total" value="" required/>
+						    <label class="mdl-textfield__label" for="total">Total</label>
+					  	</div>
+					  	<div class='mdl-textfield mdl-js-textfield mdl-textfield--file mdl-cell--12-col'>
+					  		<input class='mdl-textfield__input' placeholder='File' type='text' id='uploadFile' readonly/>
+					  		<div class='mdl-button mdl-button--primary mdl-button--icon mdl-button--file'>
+					  			<i class='material-icons'>attach_file</i>
+					  			<input type='file' name='archivo' id='uploadBtn'>
+					  		</div>
+					  	</div>					  	
+					   	<div class="mdl-cell--12-col mdl-textfield--align-right">
+						   	<a class="mdl-button mdl-js-button mdl-js-ripple-effect">
+							  	CANCELAR
+							</a>				   		
+					  		<button class="mdl-button mdl-js-button  mdl-js-ripple-effect mdl-button--primary">
+							  	ENVIAR
+							</button>
+				    	</div>
+			    	
+			  	</div>
+				</form>
+			
+			</section>
+		</div>
+   	</main>
+    
+{% endblock %}
+{% block adicional-scripts %}
+<script type="text/javascript">
+	document.getElementById("uploadBtn").onchange = function() {
+		document.getElementById("uploadFile").value = this.files[0].name;
+	};
+</script>
+<script type="text/javascript">
+	var pago = new Date();		
+	pago.setDate(myDate.getDate());	
+	$('#fecha_pago').val(fecha_pago);
+</script>
+{% endblock %}

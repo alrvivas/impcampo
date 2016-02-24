@@ -19,5 +19,9 @@ class Ingreso(models.Model):
 	def get_absolute_url(self):
 		return('ingreso', (), { 'ingreso_id': self.id })
 
+	@models.permalink
+	def get_absolute_url_edit_i(self):
+		return('editar-ingreso', (), { 'ingreso_id': self.id })
+
 	def __unicode__(self):
 		return unicode(self.id)
