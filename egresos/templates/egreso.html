@@ -1,0 +1,125 @@
+{% extends "base.html" %} 
+{% load static from staticfiles %}
+{% load humanize %}
+{% block staticos %}
+	<link rel="stylesheet" href="{% static "css/mdl-jquery-modal-dialog.css" %}">
+	<style type="text/css">
+	html, body {
+        height: 100%;
+        width: 100% ;
+    }
+		#map {
+	        height: 400px !important;
+	        width: 100% !important;
+      	}
+      	
+	</style>
+    
+{% endblock %}
+{% block header %}
+	<header class="mdl-layout__header mdl-layout__header--scroll mdl-color--deep-orange-500">	  			
+		<div class="mdl-layout--large-screen-only mdl-layout__header-row ">	    		
+	    	<div class=" mdl-layout-spacer"></div>
+	    	<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
+				<form>
+		            <label class="mdl-button mdl-js-button mdl-button--icon" for="search-field">
+		              	<i class="material-icons">search</i>
+		            </label>
+		            <div class="mdl-textfield__expandable-holder">
+		              	<input class="mdl-textfield__input" type="text" id="search-field">
+		            </div>
+	            </form>
+	      	</div>
+		</div>
+		<div class="mdl-typography--text-center ">
+			<div class="mdl-layout-title">
+				<h1 >{{page_title}}</h1>
+			</div>
+
+			
+		</div>
+		<div class="mdl-layout--large-screen-only mdl-layout__header-row">
+			<!---->
+		</div>	
+		<div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--deep-orange-700">
+			<a href="#datos" class="mdl-layout__tab is-active">Datos</a>
+			<a href="#" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-color--amber-500 mdl-shadow--4dp" id="add">
+	            <i class="material-icons mdl-color-text--white" role="presentation">mode_edit</i>	            
+	      	</a>	      	
+			{% include "menu-cliente.html" %}
+			    
+		</div>
+		
+			
+	</header>
+	{% include "menu.html" %}
+{% endblock %}
+
+{% block contedor %}
+  	<main class="mdl-layout__content mdl-color--grey-100">
+	  	<div class="mdl-grid demo-content mdl-layout__tab-panel is-active" id="datos">
+	  		<div class="mdl-grid">
+	  			<div class="demo-cards mdl-cell mdl-cell--4-col mdl-grid mdl-grid--no-spacing">	
+
+			  		<div class="demo-card-image mdl-card mdl-shadow--2dp " style="background-image: url('{{egreso.proveedor.imagen.url}}');background-repeat: no-repeat;background-size: cover;background-position: center;">
+						<div class="mdl-card__title mdl-card--expand"></div>
+						<div class="mdl-card__actions">
+							<span class="demo-card-image__filename">{{cliente.nombre_comercial}}</span>
+						</div>
+					</div>
+				</div>	  		
+		    	<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--8-col mdl-grid ">
+
+		    		<h2 class="mdl-cell mdl-cell--12-col">Egreso {{egreso.no_factura}}</h2>
+		    		<ul>
+		    			<li><strong>Nombre Fiscal: </strong>{{egreso.proveedor.nombre_fiscal}}</li>
+		    			<li><strong>Nombre Comercial: </strong>{{egreso.proveedor.nombre_comercial}}</li>
+		    			<li id="antiguedad"><strong>Fecha de Registro: </strong>{{egreso.fecha_registro|date:'Y-m-d'}}</li>
+		    			<li id="factura"><strong>Fecha de Factura: </strong>{{egreso.fecha_factura|date:'Y-m-d'}}</li>
+		    			<li id="pago"><strong>Fecha de Pago: </strong>{{egreso.fecha_pago|date:'Y-m-d'}}</li>
+		    			<li><strong>Subtotal: </strong>{{egreso.sub_total}}</li>
+		    			<li><strong>Total: </strong>{{egreso.total}}</li>
+		    			<li><strong>Archivo: </strong>{{egreso.archivo.url}}</li>
+		    		</ul>
+		    	</div>
+		    	<div class="mdl-tooltip mdl-tooltip--left" for="registro">
+					{{egreso.fecha_registro|timesince}}
+				</div>
+				<div class="mdl-tooltip mdl-tooltip--left" for="factura">
+					{{egreso.fecha_factura|timesince}}
+				</div>
+				<div class="mdl-tooltip mdl-tooltip--left" for="pago">
+					{{egreso.fecha_pago|timesince}}
+				</div>
+		    </div>
+		    <div class="mdl-grid">
+		    	<div class="demo-cards mdl-cell mdl-cell--4-col mdl-grid mdl-grid--no-spacing">	
+			  		
+				</div>
+		    	<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--8-col mdl-grid ">
+
+		    		<h2 class="mdl-cell mdl-cell--12-col">Representantes Empresariales</h2>
+		    		{% for r in representantes %}
+		    		<ul>		    			
+		    			<li><strong>Nombre: </strong>{{r.nombre}}</li>
+		    			<li><strong>Telefono: </strong>{{r.telefono}}</li>
+		    			<li><strong>Celular: </strong>{{r.celular}}</li>    			
+		    			
+		    		</ul>
+		    		{% empty %}
+		    			<p>No hay represntantes asignados :( <a href="{{cliente.get_absolute_url_add_r}}">¡asigna uno! :)</a></p>
+		    		{% endfor %}
+		    	</div>
+		    		
+	  		</div>
+	  		
+	  	</div>	  	
+	  		
+		    
+			
+   	</main>
+{% endblock %}
+
+{% block adicional-scripts %}
+  
+{% endblock %}

@@ -39,13 +39,13 @@ def add_egreso(request):
 def egresos(request):
     page_title = "Egresos"
     user = request.user
-    egresos = Egresos.objects.all()    
+    egresos = Egreso.objects.all()    
     query = request.GET.get('q', '')
     if query:
         qset = (
             Q(proveedor__icontains=query) | Q(no_factura__icontains=query)
         )    
-        results = Egresos.objects.filter(qset).order_by('-id')
+        results = Egreso.objects.filter(qset).order_by('-id')
         template_name = "resultados-egresos.html"
         return render_to_response(template_name, {"results": results,"query": query,'page_title':page_title},context_instance=RequestContext(request)) 
     else:
@@ -56,7 +56,7 @@ def egresos(request):
 @login_required(login_url='/login/')
 def egreso(request,egreso_id):
     user = request.user
-    egreso = get_object_or_404(Egresos, id=egreso_id)  
+    egreso = get_object_or_404(Egreso, id=egreso_id)  
     page_title = egreso.proveedor     
     template_name ="egreso.html" 
     return render_to_response(template_name, locals(),context_instance=RequestContext(request))
@@ -64,7 +64,7 @@ def egreso(request,egreso_id):
 def edit_egreso(request,egreso_id):
     page_title = "Editat Egreso"
     user = request.user
-    egreso = get_object_or_404(Egresos, id=egreso_id)
+    egreso = get_object_or_404(Egreso, id=egreso_id)
     if request.method == 'POST':
         form_egreso = egresoForm(request.POST,request.FILES,instance=egreso)
         if form_egreso.is_valid():

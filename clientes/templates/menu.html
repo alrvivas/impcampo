@@ -10,9 +10,12 @@
 	<nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">			
 		<a class="mdl-navigation__link" href="{% url 'index' %}">
 			<i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Inicio
-		</a>				
+		</a>
 		<a class="mdl-navigation__link" href="#">
-			<i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">account_balance_wallet</i>Credito y Cobranza
+			<i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">archive</i>Ingresos
+		</a>				
+		<a class="mdl-navigation__link" href="{% url 'egresos' %}">
+			<i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">unarchive</i>Egresos
 		</a>
 		<a class="mdl-navigation__link" href="{% url 'proveedores' %}">
 			<i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">group</i>Proveedores
