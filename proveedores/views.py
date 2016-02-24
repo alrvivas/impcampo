@@ -24,11 +24,11 @@ def add_proveedor(request):
     if request.method == 'POST':
         form_proveedor = proveedorForm(request.POST,request.FILES)
         if form_proveedor.is_valid():
-            proveedor = form_cliente.save(commit = False)
+            proveedor = form_proveedor.save(commit = False)
             proveedor.save()            
             return redirect(proveedor.get_absolute_url())
     else:
-        form_cliente = proveedorForm()
+        form_proveedor = proveedorForm()
     args = {}
     args.update(csrf(request))
     template_name ="add-proveedor.html"
@@ -87,11 +87,11 @@ def edit_proveedor(request,proveedor_id):
     if request.method == 'POST':
         form_proveedor = proveedorForm(request.POST,request.FILES,instance=proveedor)
         if form_proveedor.is_valid():
-            proveedor = form_cliente.save(commit = False)
+            proveedor = form_proveedor.save(commit = False)
             proveedor.save()            
             return redirect(proveedor.get_absolute_url())
     else:
-        form_cliente = clienteForm()
+        form_proveedor = clienteForm()
     args = {}
     args.update(csrf(request))
     template_name ="editar-proveedor.html"
