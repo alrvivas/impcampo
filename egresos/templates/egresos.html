@@ -1,0 +1,80 @@
+{% extends "base.html" %} 
+{% block header %}
+	<header class="mdl-layout__header mdl-layout__header--scroll mdl-color--deep-orange-500">	  			
+		<div class="mdl-layout--large-screen-only mdl-layout__header-row">	    		
+	    	<div class=" mdl-layout-spacer"></div>
+	    	<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
+				<form>
+		            <label class="mdl-button mdl-js-button mdl-button--icon" for="search-field">
+		              	<i class="material-icons">search</i>
+		            </label>
+		            <div class="mdl-textfield__expandable-holder">
+		              	<input class="mdl-textfield__input" type="text" name="q" value="{{ query|escape }}" id="search-field">
+		            </div>
+	            </form>
+	      	</div>
+		</div>
+		<div class="mdl-typography--text-center ">
+			<div class="mdl-layout-title">
+				<h1 >{{page_title}}</h1>
+			</div>
+
+			
+		</div>
+		<div class="mdl-layout--large-screen-only mdl-layout__header-row">
+			<!---->
+		</div>	
+		<div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--deep-orange-A400">
+			
+			<a href="{% url 'add-egreso' %}" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="add">
+	            <i class="material-icons" role="presentation">add</i>
+	            <span class="visuallyhidden">Add</span>
+	      </a>
+		</div>	
+	</header>
+	{% include "menu.html" %}
+{% endblock %}
+
+{% block contedor %}
+  	<main class="mdl-layout__content mdl-color--grey-100">
+	  	<div class="mdl-grid demo-content mdl-layout__tab-panel is-active">		  		
+		    	<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid ">
+		    		<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-fullwidth">
+					  <thead>
+					    <tr>
+					      	<th class="mdl-data-table__cell--non-numeric mdl-fullwidth ">No Factura</th>
+					      	<th>Proveedor</th>
+					      	<th>Fecha de Registro</th>
+					      	<th>Fecha de Factura</th>
+					      	<th>Fecha de Pago</th>
+					      	<th>Subtotal</th>
+					      	<th>Total</th>
+					      	<th>Archivo</th>
+					    </tr>
+					  	</thead>
+					  	<tbody>
+					  	{% for e in egresos %}
+					    	<tr>
+					      		<td class="mdl-data-table__cell--non-numeric">
+					      			<a href="{{ c.get_absolute_url }}">
+					      				{{e.no_factura}}
+					      			</a>
+					      		</td>
+					      		<td>{{e.proveedor}}</td>
+					      		<td>{{e.fecha_registro}}</td>
+					      		<td>{{e.fecha_factura}}</td>
+					      		<td>{{e.fecha_pago}}</td>
+					      		<td>{{e.dub_total}}</td>
+					      		<td>{{e.total}}</td>
+					      		<td>{{e.archivo.url}}</td>
+					    </tr>
+					    {% endfor %}
+					    
+					  </tbody>
+					</table>
+		    	</div>
+	  	</div>	
+		    
+			
+   	</main>
+{% endblock %}

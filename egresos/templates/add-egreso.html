@@ -51,9 +51,14 @@
 		    	</div>
 		    	<div class=" mdl-cell mdl-cell--6-col  mdl-grid">		    			
 		    			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
-						    <input class="mdl-textfield__input" type="text" name="proveedor" id="proveedor" value="" required/>
-						    <label class="mdl-textfield__label" for="proveedor">Proveedor</label>
-					  	</div>				  	  		
+					  		<select class="mdl-textfield__input" type="text" name="proveedor" id="proveedor" required>
+					  			<option value="" selected>Seleccione uno...</option>
+					  			{% for p in proveedor %}
+					  				<option value="{{p.id}}">{{p.nombre}}</option>
+					  			{% endfor %}
+					  		</select>      
+						    <label class="mdl-textfield__label" for="departamento">Proveedor</label>
+					  	</div>			  	  		
 			    		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
 						    <input class="mdl-textfield__input" type="text" name="no_factura" id="no_factura" value="" required/>
 						    <label class="mdl-textfield__label" for="no_factura">No factura</label>
@@ -104,9 +109,13 @@
 {% endblock %}
 {% block adicional-scripts %}
 <script type="text/javascript">
-
-		document.getElementById("uploadBtn").onchange = function() {
-			document.getElementById("uploadFile").value = this.files[0].name;
-		};
-	</script>
+	document.getElementById("uploadBtn").onchange = function() {
+		document.getElementById("uploadFile").value = this.files[0].name;
+	};
+</script>
+<script type="text/javascript">
+	var pago = new Date();		
+	pago.setDate(myDate.getDate());	
+	$('#fecha_pago').val(fecha_pago);
+</script>
 {% endblock %}
