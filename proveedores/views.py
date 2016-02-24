@@ -91,7 +91,7 @@ def edit_proveedor(request,proveedor_id):
             proveedor.save()            
             return redirect(proveedor.get_absolute_url())
     else:
-        form_proveedor = clienteForm()
+        form_proveedor = proveedorForm()
     args = {}
     args.update(csrf(request))
     template_name ="editar-proveedor.html"
