@@ -1,0 +1,86 @@
+{% extends "base.html" %} 
+{% load static from staticfiles %}
+{% load humanize %}
+{% load chartit %}
+
+{% block staticos %}
+	<link rel="stylesheet" href="{% static "css/mdl-jquery-modal-dialog.css" %}">
+	<style type="text/css">
+	html, body {
+        height: 100%;
+        width: 100% ;
+    }
+		#map {
+	        height: 400px !important;
+	        width: 100% !important;
+      	}
+      	
+	</style>
+    {{ weatherchart|load_charts:"graficar" }}
+{% endblock %}
+{% block header %}
+	<header class="mdl-layout__header mdl-layout__header--scroll mdl-color--deep-orange-500">	  			
+		<div class="mdl-layout--large-screen-only mdl-layout__header-row ">	    		
+	    	<div class=" mdl-layout-spacer"></div>
+	    	<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
+				<form>
+		            <label class="mdl-button mdl-js-button mdl-button--icon" for="search-field">
+		              	<i class="material-icons">search</i>
+		            </label>
+		            <div class="mdl-textfield__expandable-holder">
+		              	<input class="mdl-textfield__input" type="text" id="search-field">
+		            </div>
+	            </form>
+	      	</div>
+		</div>
+		<div class="mdl-typography--text-center ">
+			<div class="mdl-layout-title">
+				<h1 >{{page_title}}</h1>
+			</div>
+
+			
+		</div>
+		<div class="mdl-layout--large-screen-only mdl-layout__header-row">
+			<!---->
+		</div>	
+		<div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--deep-orange-700">
+			<a href="#datos" class="mdl-layout__tab is-active">Datos</a>
+			<a href="#" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-color--amber-500 mdl-shadow--4dp" id="add">
+	            <i class="material-icons mdl-color-text--white" role="presentation">mode_edit</i>	            
+	      	</a>	      	
+			{% include "menu-egreso.html" %}
+			    
+		</div>
+		
+			
+	</header>
+	{% include "menu.html" %}
+{% endblock %}
+
+{% block contedor %}
+  	<main class="mdl-layout__content mdl-color--grey-100">
+	  	<div class="mdl-grid demo-content mdl-layout__tab-panel is-active" id="datos">
+	  		<div class="mdl-grid">
+	  			<div class="demo-cards mdl-cell mdl-cell--4-col mdl-grid mdl-grid--no-spacing">	
+
+			  		
+				</div>	  		
+		    	<div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--8-col mdl-grid ">
+
+		    		<h2 class="mdl-cell mdl-cell--12-col">Egreso {{egreso.no_factura}}</h2>
+		    		 <div id='graficar'> Chart will be rendered here </div>
+		    	</div>
+		    	
+		    </div>
+	  		
+	  	</div>	  	
+	  		
+		    
+			
+   	</main>
+{% endblock %}
+
+{% block adicional-scripts %}
+  
+{% endblock %}
+

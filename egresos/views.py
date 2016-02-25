@@ -79,3 +79,36 @@ def edit_egreso(request,egreso_id):
     args.update(csrf(request))
     template_name ="editar-egreso.html"
     return render_to_response(template_name, locals(), context_instance=RequestContext(request))
+
+
+def graficar_egreso(request):
+    user = request.user
+    egresosdata = \
+        DataPool(
+           series=
+            [{'options': {
+               'source': Egreso.objects.all()},
+              'terms': [
+                'fecha_registro',
+                'total']}
+             ])
+
+    #Step 2: Create the Chart object
+    cht = Chart(
+            datasource = egresosdata,
+            series_options =
+              [{'options':{
+                  'type': 'line',
+                  'stacking': False},
+                'terms':{
+                  'fecha_registro': [
+                    'total']
+                  }}],
+            chart_options =
+              {'title': {
+                   'text': 'Grafica de Egresos'},
+               'xAxis': {
+                    'title': {
+                       'text': 'Month number'}}})
+    template_name ="graficar-egreso.html"
+    return render_to_response(template_name, locals(), context_instance=RequestContext(request))
